@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.talk{
+    position: absolute;
+    top: 100px;
+    right: 0;
+}
+.btn{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    border: 1px solid dodgerblue;
+    top:0;
+    right: 0;
+    background: url("../img/jqr.png") no-repeat center;
+
+}
+.talk_box{
+    /*transform: translateX(200px);*/
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 500px;
+    height: 500px;
+    border:1px solid #4983EE;
+    display: none;
+}
+.title{
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #4983EE ;
+    color: white;
+    background: #4983EE;
+}
+
+.close{
+    float: right;
+    margin-right: 20px;
+    color: white;
+}
+.talk_content{
+    padding: 0;
+    width: 500px;
+    height: 350px;
+    overflow: auto;
+    border-bottom: 1px solid #4983EE ;
+}
+.talk_content li{
+    list-style: none;
+    margin-right: 20px;
+
+    margin-top: 20px;
+}
+.talk_content li img{
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+}
+#msg{
+    height: 77px;
+    width: 500px;
+    border:none;
+    resize:none;
+    outline:none;
+}
+#msg:focus {
+    border:none;
+    outline:none;
+}
+.bq_box{
+    width: 100%;
+    height: 30px;
+}
+.send{
+    padding: 5px 10px;
+    background: #4983EE;
+    width: 50px;
+    text-align: center;
+    color: white;
+    z-index: 1;
+    position: absolute;
+    bottom: 20px;
+    right: 5px;
+}
+
+.service, .custom{
+    font-size: 15px;
+    font-family: "微软雅黑";
+}
+.service:before{
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin: 3px;
+    width: 48px;
+    height: 48px;
+    background: url('../img/jqr.png') no-repeat;
+}
+.custom{
+    text-align: right;
+}
+.custom:after{
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin: 3px;
+    width: 48px;
+    height: 48px;
+    background: url('../img/person.png') no-repeat;
+}
+.chat-txt{
+    text-align: left;
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 300px;
+    border-radius: 5px;
+    margin-left: 8px;
+    background-color: #4983EE;
+    padding: 10px 10px;
+    color: white;
+    font-size: 10px;
+}
+.chat-txt2{
+    text-align: left;
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 300px;
+    border-radius: 5px;
+    margin-left: 8px;
+    background-color: #12E98C;
+    padding: 10px 10px;
+    color: white;
+    font-size: 10px;
+}
