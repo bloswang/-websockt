@@ -1,32 +1,41 @@
 var chatLog = document.querySelector("#chatLog");
 var msg = document.querySelector("#msg");
 var btnSend = document.querySelector("#btnSend");
-var url =  "ws://echo.websocket.org";
-var ws = new WebSocket(url);
-ws.onopen = function () {
-    ws.send("open");
+
+
+//当用户一点开机器人，默认回复‘你好，有什么可以帮您的’
+addChatItem("service",'chat-txt', "你好！有什么可以帮您的吗?")
+
+//回复消息
+var backMsg = function(msg){
+    //用户输入的消息为msg
+    console.log(msg)
+    return msg
 }
-//    接收消息
-ws.onmessage = function (ev) {
-    addChatItem("service","chat-txt", ev.data);
-    console.log(ev.data)
-}
-//    发送信息
+
+//点击发送按钮发送信息
 btnSend.onclick = function () {
     sendMsg();
 }
-//    按回车自动发送消息
+
+//按回车自动发送消息
 window.onkeydown = function (ev) {
-    //console.log(ev);
     if(ev.keyCode == 13){
         sendMsg();
     }
 }
-//    发送消息
+//发送消息的回掉函数
 function sendMsg() {
-    ws.send(msg.value);
+    //1.添加用户发送的信息到页面
     addChatItem("custom","chat-txt2", msg.value);
-//        清空消息区
+
+    //2.发送消息以后将参数传到backMsg
+    var back = backMsg(msg.value)
+
+    //3.添加回复的消息到页面
+    addChatItem("service",'chat-txt', back)
+
+    //4.清空消息区
     msg.value = null;
 }
 /**
@@ -40,14 +49,13 @@ function addChatItem(selector,textStyle, msg) {
     liDom.classList.add(selector);
     var spanDom = document.createElement("span");
     spanDom.classList.add(textStyle);
-    spanDom.innerText = msg;
+    spanDom.innerText = msg.trim();
     liDom.appendChild(spanDom);
     chatLog.appendChild(liDom);
     //        滚动条处理：始终位于聊天区域底部
     chatLog.scrollTop = 100000;
     //chatLog.scrollTop = chatLog.offsetHeight;
 }
-
 
 //点击机器人图标弹出聊天窗口，再次点击关闭
 var flag = true
@@ -74,3 +82,4 @@ var close = function(){
         right:'0px',
     }).css('display','none');
 }
+
